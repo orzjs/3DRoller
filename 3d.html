@@ -3,16 +3,24 @@
 <title>test 3d</title> 
 </head> 
 <body> 
-<h1>move your mouse on and rolling wheel</h1> 
 <style>
-body {
-	height: 2000px;
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
 }
 .container {
+	position: absolute;
 	width: 600px;
 	height: 500px;
 	margin: 10px auto;
-	perspective: 600px;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 	overflow: hidden;
 }
 .wrapper {
@@ -20,7 +28,6 @@ body {
 	width: 200px;
 	height: 40px;
 	transform-style: preserve-3d;
-	transform: rotateY(0deg);
 	transition: all 0.8s;
 	-webkit-transition: all 0.8s;
 }
@@ -28,88 +35,36 @@ body {
 	position: absolute;
 	width: 200px;
 	height: 40px;
-	box-shadow: 2px 0px 2px #ccc;
+	line-height: 40px;
+	text-align: center;
+}
+#switch {
+	position: absolute;
+	-webkit-user-select:none;
+	user-select:none;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 24px;
+	color: #fff;
+	background-color: #ef8376;
+	left: 50%;
+	top: 70%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
 }
 </style>
 <div> 
 <div class="container"> 
-	<div class="wrapper">
-		<div>
-			1111111111111111111
-		</div>
-		<div>
-			2222222222222222222
-		</div>
-		<div>
-			3333333333333333333
-		</div>
-		<div>
-			4444444444444444444
-		</div>
-		<div>
-			5555555555555555555
-		</div>
-		<div>
-			6666666666666666666
-		</div>
-		<div>
-			7777777777777777777
-		</div>
-		<div>
-			8888888888888888888
-		</div>
-	</div>
+	<div class="wrapper"></div>
 </div> 
-
-<script type="text/javascript"> 
-
-/*
- *
- *Author: Pengjiyuan
- *Project: 3d Scroll
- *
- */
-;(function() {
-	var rotate = 0;
-
-	var randomHsl = function() {
-		return "hsla(" + Math.round(360 * Math.random()) + "," + "60%, 50%, .6)";
-	},
-	transform = function(element, value, key) {
-		key = key || "Transform";
-		["Moz", "O", "Ms", "Webkit", ""].forEach(function(prefix) {
-			element.style[prefix + key] = value;	
-		});	
-			
-		return element;
-	},
-	$ = function(selector) {
-		return document.querySelector(selector);
-	},
-	$$ = function(selector) {
-		return document.querySelectorAll(selector);
-	},
-	getStyle = function(selector){
-		return selector.currentStyle ? selector.currentStyle : document.defaultView.getComputedStyle(selector, null);
-	};
-  
-	var length = Array.from($$('.wrapper div')).length,
-		intervalDeg = 360 / length,
-		rZ = (((getStyle($$('.wrapper div')[0]).height).slice(0, 2) / 2) / Math.tan(0.5 * intervalDeg * Math.PI / 180)).toFixed(4);
-	
-	/**************************/
-	//for firefox
-	Array.from($$('.wrapper div')).forEach(function(item, index) {
-		item.style = 'transform: rotateX('+ intervalDeg*index +'deg) translateZ('+ rZ +'px); background-color: ' + randomHsl();
-	});
-
-	/**************************/
-
-	$('.container').addEventListener('wheel', function(e) {
-		e.preventDefault();
-		transform($('.wrapper'), "rotateX(" + (intervalDeg * rotate++) +"deg)");	
-	});
-})();
+<div id="switch">GO!</div>
+<script src="lib/roller.js"></script>
+<script>
+	Roller();
 </script>
 </body> 
 </html>
