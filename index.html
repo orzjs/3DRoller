@@ -1,0 +1,124 @@
+<html> 
+<head> 
+<title>test 3d</title> 
+</head> 
+<body> 
+<style>
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+h1 {
+	color: #fff;
+	text-shadow: 0 0 2px #ccc;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+.mask {
+	width: 100%;
+	height: 100%;
+	background: url('img/bg.jpg') center center no-repeat;
+	background-size: cover;
+	-webkit-filter: blur(40px);
+	-moz-filter: blur(40px);
+  -ms-filter: blur(40px);    
+  filter: blur(40px);
+}
+.container {
+	position: absolute;
+	width: 600px;
+	height: 500px;
+	margin: 10px auto;
+	perspective: 800px;
+	-webkit-perspective: 800px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+.wrapper {
+	margin: 200px auto;
+	width: 200px;
+	height: 40px;
+	transform-style: preserve-3d;
+	transition: all 0.8s;
+	-webkit-transition: all 0.5s;
+}
+.stage {
+	transform-style: preserve-3d;
+	transform: rotateY(-25deg);
+	-webkit-transform: rotateY(-25deg);
+}
+.wrapper > div {
+	position: absolute;
+	width: 300px;
+	height: 40px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	background: url('img/item_bg.jpg') center center no-repeat;
+	box-shadow: 0 0 2px #ccc;
+}
+#switch {
+	position: absolute;
+	-webkit-user-select:none;
+	user-select:none;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 20px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 24px;
+	color: #fff;
+	background-color: #ef8376;
+	left: 50%;
+	top: 70%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+}
+</style>
+<div>
+<div class="mask"></div>
+<h1>真心话提问</h1>
+<div class="container">
+	<div class="stage">
+		<div class="wrapper"></div>
+	</div>
+</div> 
+<div id="switch">GO</div>
+<script src="lib/roller.js"></script>
+<script>
+	var items = ['你最怕的事情或东西是什么?',
+							 '打算什么时候结婚?',
+							 '你作弊使用过哪些手段?',
+							 '做过最丢脸的事情?',
+							 '写首自己最最喜爱的歌?',
+							 '你的初恋是几岁?', 
+							 '大学到现在共挂过几门课?',
+							 '你第一个喜欢的异性叫什么名字?',
+							 '你对自己的梦中情的要求是什么?',
+							 '曾经有过最被感动的事是什么?',
+							 '你最想要的3样东西是什么?',
+							 '你愿意拥有什么超能力？',
+							 '最喜欢哪部电影?',
+							 '如果你爱的人不爱你怎么办?',
+							 '你在乎别人看你的眼光吗?',
+							 '最想感谢的人是谁?',
+							 '到目前为止你做过最疯狂的事是?',
+							 '喜欢看什么动漫?',
+							 '哭得最伤心的是哪一次?为什么?',
+							 '你有恨过谁吗?']
+	Roller({
+		items: items
+	});
+</script>
+</body> 
+</html>
